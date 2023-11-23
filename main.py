@@ -14,7 +14,7 @@ end = dt.datetime(2024, 1, 1)
 
 st.title('Stock Trend Prediction')
 
-user_input = st.text_input('Enter Stock Ticker', 'TSLA')
+user_input = st.text_input('Enter Stock Ticker, BTC-USD or ETH-USD', 'TSLA')
 
 # Check if user input is 'yahoo'
 if user_input.lower() == 'yahoo':
@@ -61,7 +61,7 @@ else:
 
 
     #Load model
-    model = load_model('model.h5')
+    model = load_model('model_bitcoin.h5')
 
 #Testing Part
 test_data = scaled_data[training_data_len - 60 : , :]
@@ -107,7 +107,8 @@ fig2 = plt.figure(figsize=(6,12))
 plt.plot(y_test, 'b', label='Orignal Price')
 # plt.plot(pred_price, 'r', label='Predicted Price')
 pred_price
-# plt.xlabel('Time')
-# plt.ylabel('Price')
+plt.xlabel('Time')
+plt.ylabel('Price')
 plt.legend()
 st.pyplot(fig2)
+
